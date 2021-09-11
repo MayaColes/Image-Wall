@@ -31,5 +31,9 @@
 /config/master.key
 
 # Ignore tmp files
-
 /tmp
+
+# Ignore other files
+../.DS_Store
+../.idea/
+
