@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'user_images', to: 'images#all_user_images'
+
+  get 'all_users', to: 'users#all_users'
 end
