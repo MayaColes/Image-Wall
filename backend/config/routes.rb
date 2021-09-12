@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'user_images', to: 'images#all_user_images'
+  get '/user_images', to: 'images#all_user_images'
 
-  get 'all_users', to: 'users#all_users'
+  get '/all_users', to: 'users#all_users'
+  post '/login', to: 'users#login'
 end
