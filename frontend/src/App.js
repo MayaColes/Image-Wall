@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import {Provider} from "react-redux";
 import configureStore from './redux/store'
-//import {userPages} from './pages/userPages'
+import {UserRouter} from './pages/user'
+import {AuthRouter} from './pages/auth'
 
 const store = configureStore()
 
@@ -16,8 +17,8 @@ function App() {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            {/*<Route path='/' component = {authPages}/>
-            <Route path='/user' component={userPages}/>*/}
+            <Route path='/' component = {authPages}/>
+            <Route path='/user' component={userPages}/>
           </Switch>
         </BrowserRouter>
       </Provider>
