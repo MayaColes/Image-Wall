@@ -1,5 +1,8 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
+import landing from './landing'
+import login from './login'
+import signup from './signup'
 
 function AuthRouter (props){
     return (
