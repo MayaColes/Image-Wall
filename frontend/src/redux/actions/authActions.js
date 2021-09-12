@@ -3,7 +3,7 @@ import {
     REMOVE_USER,
 } from "../actionTypes/authActionTypes";
 
-export const setUserImages = (user) => ({
+export const setUser = (user) => ({
     type: SET_USER,
     user: user
 })

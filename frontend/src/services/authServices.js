@@ -1,16 +1,18 @@
 import React from "react"
 import axios from 'axios'
+import {setUser} from '../redux/actions/authActions'
 
-export const login = async (username, password)  => {
-    let user = null
+export const login = async (dispatch, username, password)  => {
     await axios.post("http://localhost:3001/login", {
         username: username,
         password: password
     }).then(res => {
-        user = res.data
+        dispatch(setUser(res.data))
+    }).catch(e => {
+        return false
     })
 
-    return user
+    return true
 }
 
 export const signup = async (username, password) => {
