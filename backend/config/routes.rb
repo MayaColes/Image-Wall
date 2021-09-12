@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   get '/all_users', to: 'users#all_users'
   post '/login', to: 'users#login'
+  post '/signup', to: 'users#signup'
 end

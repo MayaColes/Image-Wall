@@ -10,17 +10,23 @@ class UsersController < ApplicationController
     render json: @user, status: 200
   end
 
-  def create
+  def signup
     if User.find_by(username: params[:username]) != nil
       render json: { error: "Username taken" }, status: 400
-    end
 
-    @user = User.create!({
-                           username: params[:username],
-                           password: params[:password]
+    elsif params[:username].nil? || params[:username].empty?
+      render json: { error: "Username cannot be empty" }, status: 400
+
+    elsif params[:password].nil? || params[:password].empty?
+      render json: { error: "Password cannot be empty" }, status: 400
+
+    else
+      @user = User.create!({
+                             username: params[:username],
+                             password: params[:password]
                            })
-
-    render json: @user, status: 200
+      render json: @user, status: 200
+    end
   end
 
   def login
