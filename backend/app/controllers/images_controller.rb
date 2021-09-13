@@ -12,14 +12,14 @@ class ImagesController < ApplicationController
   end
 
   def create
-    if params[:picture].empty?
+    if params[:picture] === nil
       render json: { error: "Can't create image without a picture!" }, status: 400
     end
 
     @image = Image.create!({
-                           user_id: params[:id],
+                           user_id: params[:user_id],
                            name: params[:name],
-                           description: params[:name]
+                           description: params[:description]
                          })
 
     @image.picture = params[:picture]
