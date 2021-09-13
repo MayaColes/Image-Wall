@@ -51,12 +51,15 @@ function Feed (props){
             <div className={classes.background}>
                 <Grid container spacing={3}>
                     {props.feed.map(image => {
-
+                        console.log(image)
                         return (
                             <>
                                 <Grid item xs={12} className={classes.centerWrapper}>
                                     <Paper className={classes.card}>
-                                        <Typography>
+                                        <Typography variant='body2'>
+                                            Posted by {image.user.username}
+                                        </Typography>
+                                        <Typography variant='h5'>
                                             {image.name}
                                         </Typography>
                                         <Typography>
