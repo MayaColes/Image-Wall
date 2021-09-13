@@ -32,7 +32,7 @@ function NewImage (props){
     const handlePost = async () => {
         if(title !== "" && file != null){
             createImage(file, title, description, props.user.id).then(res =>{
-                setImagePosted(true)
+                navigate('/user/feed')
             })
         }
     }

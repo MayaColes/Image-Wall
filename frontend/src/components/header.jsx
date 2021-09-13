@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
     },
     appbar: {
         background: "royalblue"
+    },
+    rightButton: {
+        marginLeft: 'auto',
+        color: "white",
     }
 }))
 
@@ -31,20 +35,20 @@ function Header (props) {
     return (
         <AppBar position="absolute">
             <Toolbar className={classes.appbar}>
-                <Typography color='inherit' variant='h6' >
-                    <Button
-                        className={classes.buttons}
-                        onClick={() => setLogoutDialog(true)}
-                        style={{ fontSize: '17px' }}
-                    >
-                        Logout
-                    </Button>
-                    <Typography color='primary' variant='h6'>
-                        <Link component={RouterLink} to='/user/post' >
-                            Create a Post
-                        </Link>
-                    </Typography>
-                </Typography>
+                <Button
+                    className={classes.buttons}
+                    onClick={() => setLogoutDialog(true)}
+                    style={{ fontSize: '17px' }}
+                >
+                    Logout
+                </Button>
+                <Button
+                    className={classes.rightButton}
+                    onClick={handlePost}
+                    style={{ fontSize: '17px' }}
+                >
+                    Create a post
+                </Button>
             </Toolbar>
         </AppBar>
     )
