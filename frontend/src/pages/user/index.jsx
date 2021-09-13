@@ -1,10 +1,23 @@
-import React from "react";
-import {Route, Switch} from "react-router-dom";
+import React, {useEffect} from "react";
+import {Route, Switch, useHistory} from "react-router-dom";
 import feed from './feed'
 import home from './home'
 import post from './newImage'
+import connect from "react-redux/es/connect/connect";
 
 function UserRouter (props){
+    const history = useHistory()
+
+    const navigate = (path) => {
+        history.push(path);
+    }
+
+    useEffect(() => {
+        if(props.user == null){
+            navigate('/')
+        }
+    }, [props.user])
+
     return (
         <>
             <Switch>
@@ -16,4 +29,14 @@ function UserRouter (props){
     )
 }
 
-export default UserRouter
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user,
+    }
+}
+
+const mapDispatch = dispatch => ({
+    dispatch: (data) => dispatch(data)
+})
+
+export default connect(mapStateToProps, mapDispatch)(UserRouter);
