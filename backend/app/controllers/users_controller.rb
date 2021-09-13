@@ -34,8 +34,8 @@ class UsersController < ApplicationController
 
     if @user.present? && @user.authenticate(params[:password])
       render json: @user, status: 200
+    else
+      render json: { error: "Password Invalid" }, status: 400
     end
-
-    render json: { error: "Password Invalid" }, status: 400
   end
 end
