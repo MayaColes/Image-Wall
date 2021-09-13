@@ -1,13 +1,19 @@
-import {SET_FEED, REMOVE_IMAGES} from "../actionTypes/imageActionTypes";
+import {SET_FEED, SET_PAGE_COUNT, REMOVE_IMAGES} from "../actionTypes/imageActionTypes";
 
 const ImageReducer = (state = {
-    feedImages: []
+    feed: [],
+    pageCount: 1
 }, action) => {
     switch (action.types){
         case SET_FEED:
-            return {...state, feedImages: action.feedImages}
+            return {...state, feed: action.feed}
+        case SET_PAGE_COUNT:
+            return {...state, pageCount: action.pageCount}
         case REMOVE_IMAGES:
-            return {feedImages: []}
+            return {
+                feedImages: [],
+                pageCount: 0
+            }
         default:
             return state
     }

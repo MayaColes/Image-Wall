@@ -16,7 +16,7 @@ export const getUserImages = async (userId) => {
 export const getImageFeed = async (page) => {
     let images = []
 
-    await axios.get(`http://localhost:3001/feed?page=${page}`)
+    await axios.post(`http://localhost:3001/feed`, {page: page})
         .then(res => {
             images = res.data
         })
