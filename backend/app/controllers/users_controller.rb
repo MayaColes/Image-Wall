@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @user = User.find(params[:id])
     render json: @user, status: 200
@@ -7,7 +6,7 @@ class UsersController < ApplicationController
 
   def all_users
     @users = User.order(:created_at).page params[:page]
-    render json: @user, status: 200
+    render json: @users, status: 200
   end
 
   def signup
