@@ -4,7 +4,7 @@ const ImageReducer = (state = {
     feed: [],
     pageCount: 1
 }, action) => {
-    switch (action.types){
+    switch (action.type){
         case SET_FEED:
             return {...state, feed: action.feed}
         case SET_PAGE_COUNT:

@@ -8,7 +8,7 @@ const UserReducer = (state = {
     username: "",
     images: []
 }, action) => {
-    switch (action.types){
+    switch (action.type){
         case SET_USER_IMAGES:
             return {...state, images: action.images}
         case SET_USER_USERNAME:

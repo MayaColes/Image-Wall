@@ -7,7 +7,7 @@ const AuthReducer = (state = {
     user: null,
     loading: false
 }, action) => {
-    switch (action.types){
+    switch (action.type){
         case SET_USER:
             return {...state, user: action.user}
         case REMOVE_USER:

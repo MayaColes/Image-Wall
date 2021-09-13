@@ -24,14 +24,15 @@ export const getImageFeed = async (page) => {
     return images
 }
 
-export const createImage = async (image, name, description) => {
+export const createImage = async (picture, name, description, userId) => {
     let success = false
     let data = new FormData();
-    data.append("image", image)
+    data.append("picture", picture)
     data.append("name", name)
     data.append("description", description)
+    data.append("user_id", userId)
 
-    await axios.post("http://localhost:3001/images", data)
+    await axios.post("http://localhost:3001/create_image", data)
         .then(res => {
             success = true
         })
