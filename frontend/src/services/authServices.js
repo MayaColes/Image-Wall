@@ -15,13 +15,14 @@ export const login = async (dispatch, username, password)  => {
     return true
 }
 
-export const signup = async (username, password) => {
+export const signup = async (dispatch, username, password) => {
     let registered = false
 
     await axios.post("http://localhost:3001/signup", {
         username: username,
         password: password
     }).then(res => {
+        dispatch(setUser(res.data))
         registered = true
     }).catch(e => {
         registered = false

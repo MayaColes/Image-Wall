@@ -1,17 +1,26 @@
 import React, {useState} from "react";
 import {signup} from "../../services/authServices";
 import {Button, TextField} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
+import connect from "react-redux/es/connect/connect";
 
 function Signup (props){
-    const [signedUp, setSignedUp] = useState(false)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const history = useHistory()
+
+    const navigate = (path) => {
+        history.push(path);
+    }
 
     const handleSignup = async () => {
         if (password === confirmPassword) {
-            let status = await signup(username, password)
-            setSignedUp(status)
+            signup(props.dispatch, username, password).then(res => {
+                if (res){
+                    navigate('/user/feed')
+                }
+            })
         }
     }
 
@@ -66,4 +75,14 @@ function Signup (props){
     )
 }
 
-export default Signup
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    }
+}
+
+const mapDispatch = dispatch => ({
+    dispatch: (data) => dispatch(data)
+})
+
+export default connect(mapStateToProps, mapDispatch)(Signup);
