@@ -1,24 +1,31 @@
-# README
+# Image Wall
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Setup Instructions:
 
-Things you may want to cover:
+* Make sure you have both bundle and npm installed. This can be done through homebrew.
 
-* Ruby version
+* This application uses PostgreSQL, so postgres must be installed. This can also be done through homebrew.
+  
+* Ruby 2.7.1 and Rails are also required to run this application.
 
-* System dependencies
+* Navigate to the backend directory and run the commands:
 
-* Configuration
+  ```
+  bundler install
+  rails db:create
+  rails db:migrate
+  rails s -p 3001
+  ```
+  
+* Navigate to the frontend directory and run the commands:
 
-* Database creation
+  ```
+  npm install
+  npm start
+  ```
+  
+* Once both servers are started, go to http://localhost:3000 in your browser to see the application.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You will be required to make a user account to look at the rest of the website.
+After you make an account, you can create posts using the "Create a post" button using .jpg or .png files.
+After posting, these posts will be visible in the feed of any user using the website
