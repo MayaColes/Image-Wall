@@ -12,25 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2021_09_12_212624) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
-  enable_extension "plpgsql"
+  create_table "users", id: :uuid, force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest", null: false, default: ""
+  end
 
-  create_table "images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "images", id: :uuid, force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "picture"
-    t.uuid "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_images_on_user_id"
-  end
-
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest", default: "", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.references "user", null: false, foreign_key: true, type: :uuid
   end
 
   add_foreign_key "images", "users"

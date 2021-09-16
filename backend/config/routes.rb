@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/user_images', to: 'images#all_user_images'
   post '/feed', to: 'images#all_images'
-  post '/new_image', to: 'images#create'
+  post '/new_image', to: 'images#create_image'
 
   get '/all_users', to: 'users#all_users'
   post '/login', to: 'users#login'

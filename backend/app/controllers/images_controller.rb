@@ -11,21 +11,21 @@ class ImagesController < ApplicationController
     render json: @images, status: 200
   end
 
-  def create
-    if params[:picture] === nil
+  def create_image
+    if params[:picture] == nil
       render json: { error: "Can't create image without a picture!" }, status: 400
+    else
+      @image = Image.create!({
+                               user_id: params[:user_id],
+                               name: params[:name],
+                               description: params[:description]
+                             })
+
+      @image.picture = params[:picture]
+      @image.save
+
+      render json: @image, status: 200
     end
-
-    @image = Image.create!({
-                           user_id: params[:user_id],
-                           name: params[:name],
-                           description: params[:description]
-                         })
-
-    @image.picture = params[:picture]
-    @image.save
-
-    render json: @image, status: 200
   end
 
   def set_user
