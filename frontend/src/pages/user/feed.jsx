@@ -24,9 +24,13 @@ const useStyles = makeStyles((theme) => ({
     smallSpace: {
         padding: theme.spacing(1),
     },
+    appBarSpacer: theme.mixins.toolbar,
     background: {
         background: "ghostwhite"
     },
+    wrapper: {
+        marginTop: theme.spacing(1)
+    }
 }));
 
 function Feed (props){
@@ -47,11 +51,13 @@ function Feed (props){
 
     return(
         <>
-            <Header/>
+            <Header
+                dispatch={props.dispatch}
+            />
             <div className={classes.background}>
-                <Grid container spacing={3}>
+                <div className={classes.appBarSpacer}/>
+                <Grid container spacing={3} className={classes.wrapper}>
                     {props.feed.map(image => {
-                        console.log(image)
                         return (
                             <>
                                 <Grid item xs={12} className={classes.centerWrapper}>
