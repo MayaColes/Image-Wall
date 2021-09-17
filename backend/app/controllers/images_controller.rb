@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_action :set_user, only: [:all_user_images]
 
   def all_images
-    @images = Image.order(:created_at).paginate(page: params[:page]).includes(:user)
+    @images = Image.order('created_at DESC').paginate(page: params[:page]).includes(:user)
     render json: @images, status: 200
   end
 
