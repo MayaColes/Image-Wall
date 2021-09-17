@@ -32,7 +32,7 @@ export const createImage = async (picture, name, description, userId) => {
     data.append("description", description)
     data.append("user_id", userId)
 
-    await axios.post("http://localhost:3001/create_image", data)
+    await axios.post("http://localhost:3001/new_image", data)
         .then(res => {
             success = true
         })

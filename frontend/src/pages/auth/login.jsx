@@ -1,10 +1,26 @@
 import React, {useState} from "react";
 import {login} from "../../services/authServices";
-import {Button, TextField} from "@material-ui/core";
+import {Button, Container, makeStyles, Paper, TextField, Typography} from "@material-ui/core";
 import connect from "react-redux/es/connect/connect";
 import {useHistory} from "react-router-dom";
 
+const useStyles = makeStyles((theme) => ({
+    padding: {
+       marginTop: theme.spacing(8)
+    },
+    paperPadding: {
+        margin: theme.spacing(1)
+    },
+    paper: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+}))
+
 function Login (props){
+    const classes = useStyles();
+
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const history = useHistory()
@@ -23,39 +39,48 @@ function Login (props){
 
     return(
         <>
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                value={username}
-                onChange={(e) => {
-                    setUsername(e.target.value)
-                }}
-            />
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(event) => setPassword(event.target.value)}
-                onKeyPress={(e) => {
-                    if (e.charCode === 13) handleLogin();
-                }}
-            />
-            <Button onClick={()=>handleLogin()} color="primary" autoFocus>
-                Login
-            </Button>
+            <div className={classes.padding}>
+                <Container component="main" maxWidth="sm">
+                    <Paper className={classes.paper}>
+                        <div className={classes.paperPadding}>
+                            <Typography variant="h5">Login</Typography>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="username"
+                                label="Username"
+                                name="username"
+                                autoComplete="username"
+                                autoFocus
+                                value={username}
+                                onChange={(e) => {
+                                    setUsername(e.target.value)
+                                }}
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                                onChange={(event) => setPassword(event.target.value)}
+                                onKeyPress={(e) => {
+                                    if (e.charCode === 13) handleLogin();
+                                }}
+                            />
+                            <Button onClick={()=>handleLogin()} color="primary" variant="contained">
+                                Login
+                            </Button>
+                        </div>
+                    </Paper>
+                </Container>
+            </div>
         </>
     )
 }
